@@ -30,6 +30,8 @@ public class Vector2D {
      * @param y is the y coordinate of the point.
      */
     public Vector2D(double x, double y) {
+        this.x = x;
+        this.y = y;
 
     } // Vector2D( double, double )
 
@@ -50,8 +52,10 @@ public class Vector2D {
      * @return the sum of this vector and the other vector.
      */
     public Vector2D add( Vector2D v ) {
+        double xC = this.getX() + v.getX();
+        double yC = this.getY() + v.getY();
 
-      return new Vector2D( 0.0, 0.0 );
+      return new Vector2D( xC, yC );
     } // add (Vector2D )
     
     /**
@@ -66,8 +70,9 @@ public class Vector2D {
      * @return 
      */
     public Vector2D scale( double xFactor, double yFactor ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double xF = xFactor * this.getX();
+        double yF = yFactor * this.getY();
+        return new Vector2D( xF, yF );
     } // scale( double )
     
     /**
@@ -88,8 +93,9 @@ public class Vector2D {
      * @return a stretched (or contracted) vector.
      */
     public Vector2D scale( double factor ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double xScale = factor * this.getX();
+        double yScale = factor * this.getY();
+        return new Vector2D( xScale, yScale );
     } // scale( double )
     
     /**
@@ -108,8 +114,9 @@ public class Vector2D {
      * @return is a rotated version of this vector.
      */
     public Vector2D rotate( double angle ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double xRot = (this.getX() * Math.cos(angle)) - (this.getY() * Math.sin(angle));
+        double yRot = (this.getX() * Math.sin(angle)) - (this.getY() * Math.cos(angle));
+        return new Vector2D( xRot, yRot );
     } // rotate( double )
     
     /**
@@ -147,8 +154,9 @@ public class Vector2D {
      * components.
      */
     public double dot( Vector2D v ) {
-
-      return 0.0;
+        double xP = this.getX() * v.getX();
+        double yP = this.getY() * v.getY(); 
+        return xP + yP;
     } // dot( Vector2D )
     
     /**
@@ -168,8 +176,8 @@ public class Vector2D {
      * @return the length of the vector.
      */
     public double magnitude() {
-
-      return 0.0;
+        return Math.sqrt(this.dot(this));
+    
     } // magnitude()
     
     /**
@@ -180,8 +188,8 @@ public class Vector2D {
      * @return the value of the vector's x component. 
      */
     public double getX() {
-//        return this.x;
-      return 0.0;
+        return this.x;
+
     } // getX()
     
      /**
@@ -192,8 +200,7 @@ public class Vector2D {
      * @return the value of the vector's y component. 
      */
     public double getY() {
-
-      return 0.0;
+        return this.y;
     } // getY()
     
     /**
@@ -205,8 +212,7 @@ public class Vector2D {
      */
     @Override
     public String toString() {
-
-      return "";
+        return "(" + getX() + "," + getY() + ")";
     } // toString()
     
     /**
@@ -226,7 +232,7 @@ public class Vector2D {
         Vector2D a = new Vector2D( 3, 4 );
         Vector2D b = new Vector2D( 5, 12 );
         
-        System.out.println( "magnitude of a " + a.magnitude() );
+        System.out.println( "magnitude of a " + b.magnitude() );
         
     } // main( String [] )
 } // Vector2D
